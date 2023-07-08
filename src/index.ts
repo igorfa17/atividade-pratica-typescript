@@ -1,5 +1,7 @@
 // 1. Crie uma função que receba 2 números e retorne um objeto contendo a média e também um indicador booleano de aprovado/reprovado. Considere aprovado com média >= 6.
+
 console.log('ATIVIDADE 1: ')
+
 interface Resultado {
     media: number;
     situacao: string;
@@ -19,7 +21,9 @@ interface Resultado {
   console.log(resultado);
   
 // 2. Crie uma função que receba uma lista de objetos contendo nota e peso, realize a média das notas considerando o peso. Exemplos: Lista com 2 notas: (N1*P1) + (N2*P2) / 2 = Resultado // Lista com 3 notas: (N1*P1) + (N2*P2) + (N3*P3) / 3 = Resultado
+
 console.log('ATIVIDADE 2: ')
+
 interface NotaPeso {
     nota: number;
     peso: number;
@@ -48,7 +52,9 @@ interface NotaPeso {
   console.log(mediaExemplo);
 
 // 3. Crie um programa que simule uma carteira de dinheiro. Este programa vai precisar ter uma carteira contendo saldo, transações de entrada e saídas. Ou seja, será um objeto com estas propriedades. Depois crie uma função para lançar uma entrada e uma saída. Caso ao lançar uma saída e não tiver saldo, precisa dar um erro ou avisar.
+
 console.log('ATIVIDADE 3: ')
+
 interface Transacao {
     tipo: 'entrada' | 'saida';
     valor: number;
@@ -106,7 +112,9 @@ interface Transacao {
   console.log('Transações:', minhaCarteira.transacoes);
 
 // 4. Crie um programa para cadastrar, listar e excluir produtos de uma lista com tipagem de Produto.
+
 console.log('ATIVIDADE 4: ')
+
 interface Produto {
     id: number;
     nome: string;
@@ -164,8 +172,10 @@ interface Produto {
   // Listar produtos novamente
   lista.listarProdutos();
   
-// 5. 
+// 5. Crie um programa para mostrar informações de usuários (User) de uma empresa. Crie o tipo User com as seguintes propriedades: nome, idade, ocupação e salário (opcional). Caso o salário do usuário não seja informado, mostre o valor “N/A”. Exemplo: a. “Daphne, 23 anos, analista de TI, salário R$ 1000” // b. “Daphne, 23 anos, analista de TI, salário N/A”
+
 console.log('ATIVIDADE 5: ')
+
 interface User {
     nome: string;
     idade: number;
@@ -188,4 +198,31 @@ interface User {
   exibirInformacoesUsuario(usuario2);
   exibirInformacoesUsuario(usuario3);
 
+// 6. Usando o contexto do exercício anterior, crie um tipo de usuário que representa funcionários da diretoria da empresa. O tipo Diretor deve conter as propriedades: nome, idade, salário (opcional) e nível de comissionamento (numérico). Crie uma função que receba um Diretor e mostre suas informações. Exemplos: a. “Diretor(a) Daphne, 23 anos, comissão nível 5, salário R$ 1000” // b. “Diretor(a) Daphne, 23 anos, comissão nível 5, salário N/A”
+
+console.log('ATIVIDADE 6: ')
+
+interface User {
+    nome: string;
+    idade: number;
+    ocupacao: string;
+    salario?: number;
+  }
+  
+  interface Diretor extends User {
+    nivelComissionamento: number;
+  }
+  
+  function exibirInformacoesDiretor(diretor: Diretor): void {
+    const salario = diretor.salario ? `salário R$ ${diretor.salario}` : 'salário N/A';
+    console.log(`Diretor(a) ${diretor.nome}, ${diretor.idade} anos, comissão nível ${diretor.nivelComissionamento}, ${salario}`);
+  }
+  
+  // Exemplo de uso
+  const diretor1: Diretor = { nome: 'Daphne', idade: 23, ocupacao: 'Diretora de Vendas', salario: 1000, nivelComissionamento: 5 };
+  const diretor2: Diretor = { nome: 'Carlos', idade: 30, ocupacao: 'Diretor de Marketing', nivelComissionamento: 3 };
+  
+  exibirInformacoesDiretor(diretor1);
+  exibirInformacoesDiretor(diretor2);
+  
   
